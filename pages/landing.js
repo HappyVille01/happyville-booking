@@ -54,13 +54,13 @@ window.saveBookingToStorage = function (bookingData) {
         existingBookings.unshift(completeBooking);
         localStorage.setItem('happyvilleBookings', JSON.stringify(existingBookings));
 
-        console.log('Booking saved to localStorage:', completeBooking);
-        console.log('Total bookings:', existingBookings.length);
+        //console.log('Booking saved to localStorage:', completeBooking);
+        //console.log('Total bookings:', existingBookings.length);
 
         return bookingId;
 
     } catch (error) {
-        console.error('Error saving booking to localStorage:', error);
+        //console.error('Error saving booking to localStorage:', error);
         alert('Error saving booking. Please try again.');
         return null;
     }
@@ -101,7 +101,7 @@ window.formatTimeForDisplay = function (time) {
                 activity: document.getElementById('activity').value,
                 activityName: document.getElementById('activity').options[document.getElementById('activity').selectedIndex].text,
                 kids: parseInt(document.getElementById('kids').value) || 0,
-                adults: parseInt(document.getElementById('adults').value) || 0,
+                adults: parseInt(document.getElementById('adults').value) || 1,
                 date: document.getElementById('date').value,
                 time: selectedTimeSlot,
                 total: parseInt(document.getElementById('grandTotal').textContent) || 0,
@@ -211,10 +211,10 @@ window.closeBookingModal = function () {
     let selectedTimeSlot = null;
     let selectedActivity = null;
     let activityPrices = {
-        'general-30': { price: 80, duration: '30 minutes', adultPrice: 80 },
-        'general-1': { price: 120, duration: '1 hour', adultPrice: 120 },
-        'general-2': { price: 200, duration: '2 hours', adultPrice: 200 },
-        'toddler-30': { price: 60, duration: '30 minutes', adultPrice: 0 },
+        'general-30': { price: 50, duration: '30 minutes', adultPrice: 50 },
+        'general-1': { price: 90, duration: '1 hour', adultPrice: 90 },
+        'general-2': { price: 140, duration: '2 hours', adultPrice: 140 },
+        'toddler-30': { price: 50, duration: '30 minutes', adultPrice: 0 },
         'toddler-1': { price: 90, duration: '1 hour', adultPrice: 0 },
         'happy-party': { price: 1500, duration: '1.5 hours', adultPrice: 1500 },
         'mega-party': { price: 2500, duration: '2 hours', adultPrice: 2500 }
