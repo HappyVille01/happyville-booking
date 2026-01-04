@@ -415,10 +415,10 @@ function displayBookings(bookings) {
                 <td>
                     <div class="action-buttons">
                         <button class="btn-edit" onclick="openEditModal('${booking.id || booking.bookingid}')">
-                            <i class="fas fa-edit"></i> Edit
+                            <i class="fas fa-edit"></i> 
                         </button>
                         <button class="btn-delete" onclick="deleteBookingPrompt('${booking.id || booking.bookingid}')">
-                            <i class="fas fa-trash"></i> Delete
+                            <i class="fas fa-trash"></i> 
                         </button>
                     </div>
                 </td>

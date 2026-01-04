@@ -424,7 +424,7 @@ body {
 /* Action Buttons */
 .action-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
@@ -444,6 +444,8 @@ body {
 .btn-edit {
     background-color: rgba(0, 128, 128, 0.1);
     color: teal;
+    border: none;
+
 }
 
     .btn-edit:hover {
@@ -455,6 +457,7 @@ body {
 .btn-delete {
     background-color: rgba(231, 76, 60, 0.1);
     color: var(--danger-red);
+    border: none;
 }
 
     .btn-delete:hover {
