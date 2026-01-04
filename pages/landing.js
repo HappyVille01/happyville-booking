@@ -128,8 +128,9 @@ window.formatTimeForDisplay = function (time) {
 
                     if (firebaseResult.success) {
                         console.log('✅ Booking saved to Firebase:', firebaseResult.bookingId);
+                        closeBookingModal();   // 🔴 close booking modal
+                        resetForm();           // 🔴 clear the form
                         showBookingConfirmation(bookingData, firebaseResult.bookingId);
-                        resetForm();
                         return;
                     } else {
                         console.warn('⚠️ Firebase save failed:', firebaseResult.error);
@@ -400,11 +401,11 @@ window.closeBookingModal = function () {
 
         const kidsInput = document.getElementById('kids');
         const kids = kidsInput ? parseInt(kidsInput.value) || 0 : 0;
-        if (kids < 1) {
-            alert('Please enter at least 1 child');
-            if (kidsInput) kidsInput.focus();
-            isValid = false;
-        }
+        // if (kids < 1) {
+        //     alert('Please enter at least 1 child');
+        //     if (kidsInput) kidsInput.focus();
+        //     isValid = false;
+        // }
 
         return isValid;
     }
@@ -465,6 +466,8 @@ window.closeBookingModal = function () {
                     const saved = await saveToGoogleSheets(bookingData);
 
                     if (saved && saved.success) {
+                        closeBookingModal();   // 🔴 close booking modal
+                        resetForm();           // 🔴 clear the form
                         // Success - show confirmation
                         showBookingConfirmation(bookingData, saved.bookingId || bookingData.bookingId);
 
@@ -481,6 +484,8 @@ window.closeBookingModal = function () {
                     } else {
                         // Fallback to localStorage only
                         const localId = saveToLocalStorage(bookingData);
+                        closeBookingModal();   // 🔴 close booking modal
+                        resetForm();           // 🔴 clear the form
                         showBookingConfirmation(bookingData, localId);
                         alert('⚠️ Booking saved locally. Admin will contact you.');
 
@@ -857,7 +862,7 @@ window.closeBookingModal = function () {
         const min = parseInt(input.min) || 0;
         const max = parseInt(input.max) || 100;
 
-        if (input.id === 'kids' && value < 1) value = 1;
+        if (input.id === 'kids' && value < 1) value = 0;
         if (value < min) value = min;
         if (value > max) value = max;
 
@@ -884,7 +889,7 @@ window.closeBookingModal = function () {
         if (!kidsInput || !adultsInput) return;
 
         const kids = parseInt(kidsInput.value) || 0;
-        const adults = parseInt(adultsInput.value) || 0;
+        const adults = parseInt(adultsInput.value) || 1;
         const totalPeople = kids + adults;
 
         const totalKidsEl = document.getElementById('totalKids');
