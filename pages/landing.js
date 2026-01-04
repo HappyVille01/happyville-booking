@@ -506,7 +506,11 @@ window.closeBookingModal = function () {
         const dateInput = document.getElementById('date');
 
         if (dateInput) {
-            const today = new Date().toISOString().split('T')[0];
+            const todayDate = new Date();
+            const today =
+                todayDate.getFullYear() + '-' +
+                String(todayDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(todayDate.getDate()).padStart(2, '0');
             dateInput.min = today;
             dateInput.max = new Date(new Date().setDate(new Date().getDate() + 60)).toISOString().split('T')[0];
 
@@ -523,11 +527,13 @@ window.closeBookingModal = function () {
             if (weekendBtn) weekendBtn.addEventListener('click', setToNextWeekend);
 
             dateInput.addEventListener('change', function (e) {
-                selectedDate = new Date(e.target.value);
-                generateTimeSlots();
-                updateMiniCalendar();
-                updateSelectedTimeDisplay();
-            });
+            const [year, month, day] = e.target.value.split('-');
+            selectedDate = new Date(year, month - 1, day);
+            generateTimeSlots();
+            updateMiniCalendar();
+            updateSelectedTimeDisplay();
+        });
+
 
             const prevMonthBtn = document.getElementById('prevMonth');
             const nextMonthBtn = document.getElementById('nextMonth');
@@ -627,7 +633,9 @@ window.closeBookingModal = function () {
 
     function selectCalendarDate(day) {
         selectedDate = new Date(currentYear, currentMonth, day);
-        const dateStr = selectedDate.toISOString().split('T')[0];
+        const dateStr = selectedDate.getFullYear() + '-' +
+            String(selectedDate.getMonth() + 1).padStart(2, '0') + '-' +
+            String(selectedDate.getDate()).padStart(2, '0');
         document.getElementById('date').value = dateStr;
         generateTimeSlots();
         updateMiniCalendar();

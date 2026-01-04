@@ -554,8 +554,8 @@ function openEditModal(bookingId) {
     document.getElementById('editPhone').value = booking.phone || '';
     document.getElementById('editEmail').value = booking.email || '';
     document.getElementById('editActivity').value = booking.activity || '';
-    document.getElementById('editKids').value = booking.kids || 1;
-    document.getElementById('editAdults').value = booking.adults || 0;
+    document.getElementById('editKids').value = booking.kids || 0;
+    document.getElementById('editAdults').value = booking.adults || 1;
     document.getElementById('editDate').value = booking.date || '';
     document.getElementById('editTime').value = booking.time || '';
     document.getElementById('editStatus').value = booking.status || 'pending';
