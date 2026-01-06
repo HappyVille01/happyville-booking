@@ -642,7 +642,7 @@ textarea {
 
 .show-password {
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 12px;
     transform: translateY(-50%);
     background: none;

@@ -31,7 +31,7 @@
             <ul class="navbar-nav ms-auto">
                 <li><a href="#activities">Activities</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#booking" onclick="openBookingModal()">Book Now</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <a href="javascript:void(0)" onclick="openLoginModal()" class="login-link">
@@ -49,13 +49,14 @@
 <section id="hero">
     <h1>Welcome to HappyVille</h1>
     <p>A joyful indoor play destination where families can jump, play and create unforgettable memories.</p>
-    <p><strong>Launch Promotion:</strong> First 25 customers get grip socks for R5!</p>
+    <p><strong>This is where your joy of youth gets their favorite candy.</strong></p>
 </section>
 
 <section id="activities">
     <h2>Activities & Experiences</h2>
         <div class="activity-list">
             <div class="activity">
+
                 <h3>General Admission Play Sessions (Ages 4+)</h3>
                 <ul>
                     <li>30 minutes: R50/person, slots every 30 mins (09:30-18:30), capacity 120-150.</li>
@@ -291,7 +292,7 @@
                         <div class="form-submit">
                             <button type="submit" class="submit-btn">
                                 <span id="submitText">Submit Booking</span>
-                                <span id="totalPrice">R0</span>
+                                <!-- <span id="totalPrice">R0</span> -->
                             </button>
                             <p class="form-note">You'll receive a confirmation email within a few minutes</p>
                         </div>
@@ -366,10 +367,10 @@
                                 Keep me logged in
                             </label>
 
-                            <a href="javascript:void(0)" onclick="showForgotPassword()"
+                            <!-- <a href="javascript:void(0)" onclick="showForgotPassword()"
                                class="forgot-password">
                                 Forgot password?
-                            </a>
+                            </a> -->
                         </div>
 
                         <button type="submit" class="submit-btn login-btn">
@@ -524,6 +525,14 @@
 
 
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function () {
+    emailjs.init("ys-9FOb45oPO_X9lc");
+})();
+</script>
+
 
 </body>
 </html>

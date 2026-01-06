@@ -131,6 +131,10 @@ window.formatTimeForDisplay = function (time) {
                         closeBookingModal();   // 🔴 close booking modal
                         resetForm();           // 🔴 clear the form
                         showBookingConfirmation(bookingData, firebaseResult.bookingId);
+                        sendBookingEmail(bookingData, firebaseResult.bookingId)
+                            .then(() => console.log("📧 Email sent successfully"))
+                            .catch(err => console.error("📧 Email failed", err));
+
                         return;
                     } else {
                         console.warn('⚠️ Firebase save failed:', firebaseResult.error);
@@ -459,7 +463,7 @@ window.closeBookingModal = function () {
                     bookingId: 'HV' + Date.now() + Math.floor(Math.random() * 1000)
                 };
 
-                console.log('Sending booking:', bookingData);
+                //console.log('Sending booking:', bookingData);
 
                 try {
                     // Try to save to Google Sheets
@@ -927,7 +931,7 @@ window.closeBookingModal = function () {
         const grandTotal = kidsTotal + adultsTotal + socksTotal;
         if (grandTotalEl) grandTotalEl.textContent = grandTotal;
 
-        if (totalPriceEl) totalPriceEl.textContent = `R${grandTotal}`;
+        //if (totalPriceEl) totalPriceEl.textContent = `R${grandTotal}`;
         if (submitTextEl) submitTextEl.textContent = `Book Now - R${grandTotal}`;
     }
 
@@ -1256,6 +1260,27 @@ function setupForgotPasswordForm() {
             }, 2000);
         }, 1500);
     });
+}
+
+// ============================================
+// Send Booking email 
+// ============================================
+function sendBookingEmail(bookingData, bookingId) {
+    return emailjs.send(
+        "service_i9zr00x",
+        "template_3n65iss",
+        {
+            name: bookingData.name,
+            email: bookingData.email,
+            booking_id: bookingId,
+            activity: bookingData.activityName,
+            date: bookingData.date,
+            time: bookingData.time,
+            adults: bookingData.adults,
+            kids: bookingData.kids,
+            total: bookingData.total
+        }
+    );
 }
 
 
