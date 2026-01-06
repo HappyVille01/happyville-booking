@@ -226,7 +226,7 @@ window.closeBookingModal = function () {
     };
 
     const availableTimeSlots = {
-        'weekday': ['09:00', '10:30', '13:00', '15:00', '17:00', '19:00'],
+        'weekday': ['08:00','09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00','19:00'],
         'weekend': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00']
     };
 
@@ -728,9 +728,13 @@ window.closeBookingModal = function () {
             const displayHour = hour % 12 || 12;
             const displayTime = `${displayHour}:${minutes} ${ampm}`;
 
+            // slotEl.innerHTML = `
+            //     <div class="time-display">${displayTime}</div>
+            //     <div class="spots">${availableSpots}/${totalSpots} spots</div>
+            // `;
+
             slotEl.innerHTML = `
                 <div class="time-display">${displayTime}</div>
-                <div class="spots">${availableSpots}/${totalSpots} spots</div>
             `;
 
             if (isAvailable) {
