@@ -27,7 +27,7 @@ main{
 .location {
     max-width: 1100px;
     margin: 50px auto;
-    padding: 0 15px;
+    padding: 25px 20px;
     text-align: center;
     overflow: hidden;
 }
